@@ -15,6 +15,7 @@ before_script:
   - export -f travis_time_start
 
 script:
+  - travis_cmd ls\ -lR\ $HOME --echo --timing
   - travis_fold start ls
   - travis_cmd ls\ -l\ * --echo --timing
   - travis_fold end ls
