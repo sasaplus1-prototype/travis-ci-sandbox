@@ -15,9 +15,12 @@ before_script:
   - export -f travis_time_start
   - >
     travis_fold_cmd() {
-      travis_fold start "${1}"
-      travis_cmd "${2}"  --echo --timing
-      travis_fold end "${1}"
+      local name
+      name="$1"
+      shift
+      travis_fold start "$name"
+      travis_cmd "$*" --echo --timing
+      travis_fold end "$name"
     }
   - export -f travis_fold_cmd
 
@@ -30,4 +33,4 @@ script:
     travis_fold start ls
     travis_cmd ls\ -l\ * --echo --timing
     travis_fold end ls
-  - travis_fold_cmd ls ls\ -l\ *
+  - travis_fold_cmd ls ls -l *
