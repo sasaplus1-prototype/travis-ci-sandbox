@@ -36,3 +36,4 @@ script:
   - travis_fold_cmd ls ls -l *
   - travis_fold_cmd ls.and.ls ls -1 && ls -l
   - travis_fold_cmd ls.and.ls ls -1 \&\& ls -l
+  - travis_fold_cmd ls.and.ls ls -1 '&&' ls -l
