@@ -1,0 +1,24 @@
+os: linux
+
+dist: bionic
+
+language: shell
+
+git:
+  depth: 1
+
+before_script:
+  - export -f travis_cmd
+  - export -f travis_fold
+  - export -f travis_nanoseconds
+  - export -f travis_time_finish
+  - export -f travis_time_start
+
+script:
+  - travis_fold start ls
+  - travis_cmd ls\ -l\ * --echo --timing
+  - travis_fold end ls
+  - |
+    travis_fold start ls
+    travis_cmd ls\ -l\ * --echo --timing
+    travis_fold end ls
